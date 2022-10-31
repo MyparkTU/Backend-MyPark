@@ -6,7 +6,7 @@ const Authentication = require('./routes/Authentication');
 const DeviceRoutes = require('./routes/DeviceRoutes');
 const PlacesRoutes = require('./routes/PlacesRoutes');
 const ReportRoutes = require('./routes/ReportRoutes');
-
+const cors = require('cors');
 dbConnect();
 
 app.use((req, res, next) => {
@@ -21,21 +21,30 @@ app.use((req, res, next) => {
   );
   next();
 });
+
+app.use(cors());
 app.use(bodyParser.json());
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/", (request, response) => {
-  response.json({ message: "Hey! This is your mypark server response!" });
+app.get("/", (req, res) => {
+  res.json({ message: "Hey! This is your mypark server response!" });
 });
-app.use("/Authentication",Authentication)
+
+app.use("/Authentication",Authentication);
+
 app.use("/devices",DeviceRoutes);
+
 app.use("/Places",PlacesRoutes);
+
 app.use("/Report",ReportRoutes);
 
 app.listen(3001, () => {
+
     console.log("Server is running on port 3001.");
+    
   });
   
-module.exports = app;
+
   
 

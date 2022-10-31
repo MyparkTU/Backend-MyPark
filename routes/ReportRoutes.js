@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-router.get("/", (request, response) => {
-    response.json({ message: "Hello This Report Path" });
+router.get("/", (req, res) => {
+    res.json({ message: "Hello This Report Path" });
 });
 
 module.exports = router;
