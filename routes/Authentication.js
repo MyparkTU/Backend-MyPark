@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../auth');
-
+const user = require('../models/UserModel')
 router.get("/", (request, response) => {
     response.json({ message: "Hello This Auth Path" });
 });
