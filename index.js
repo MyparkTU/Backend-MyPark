@@ -31,13 +31,13 @@ app.get("/", (req, res) => {
   res.json({ message: "Hey! This is your mypark server response!" });
 });
 
-app.use("/Authentication",Authentication);
+app.use("/authentication",Authentication);
 
 app.use("/devices",DeviceRoutes);
 
-app.use("/Places",PlacesRoutes);
+app.use("/places",PlacesRoutes);
 
-app.use("/Report",ReportRoutes);
+app.use("/report",ReportRoutes);
 
 app.listen(3001, () => {
 
