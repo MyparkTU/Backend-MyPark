@@ -29,6 +29,7 @@ const PlaceSchema = new mongoose.Schema({
 
     quantity : {
         type : Number,
+        default : 20,
         required: [true]
     },
 
@@ -43,7 +44,9 @@ const PlaceSchema = new mongoose.Schema({
     },
 
     review : {
-        type : Number, min : 0, max : 5
+        type : Number,
+        default : 0,
+        require : [true]
     },
 
     img : {

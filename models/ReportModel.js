@@ -2,22 +2,25 @@ const mongoose = require('mongoose');
 
 const ReportSchema = new mongoose.Schema ({
 
-    places_id : {
+    report_id : {
         type : String
     },
+    
+    // name : {
+    //     type : String
+    // },
 
     topic : {
         type : String
-
     },
 
     type : {
         type : String
     },
 
-    img : {
-        type : String
-    },
+    // img : {
+    //     type : String
+    // },
 
     description : {
         type : String
