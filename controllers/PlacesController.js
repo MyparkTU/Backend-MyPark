@@ -3,6 +3,7 @@ const Places = require('../models/PlaceModel');
 // create place
 exports.create = async (req, res) => {
     const newplace = new Places ({
+        place_id : req.body.place_id,
         name : req.body.name,
         latitude : req.body.latitude,
         longtitude : req.body.longtitude,
@@ -10,11 +11,12 @@ exports.create = async (req, res) => {
         quantity : req.body.quantity,
         type : req.body.type,
         description : req.body.description,
-        review : req.body.review
+        review : req.body.review,
+        img : req.body.img
     })
-    console.log(newplace);
+    console.log(`DATA FROM : /create \n ${newplace}`);
     newplace.save();
-    res.send(newplace);
+    res.status(201).json(newplace);
 }
 
 // get all place data
@@ -23,8 +25,8 @@ exports.findAll = async (req, res) => {
         if (err) {
             return next(err)
         } else {
-            console.log(data);
-            res.send(data)
+            console.log(`DATA FROM : /getAll \n ${data}`);
+            res.json(data);
         }
     })
 }
@@ -35,8 +37,8 @@ exports.findCar = async (req, res) => {
         if (err) {
             return next(err)
         } else {
-            console.log(data);
-            res.send(data)
+            console.log(`DATA FROM : /get/car \n ${data}`);
+            res.json(data)
         }
     })
 }
@@ -47,8 +49,8 @@ exports.findMotorcycle = async (req, res) => {
         if (err) {
             return next(err)
         } else {
-            console.log(data);
-            res.send(data)
+            console.log(`DATA FROM : /get/mortocycle \n ${data}`);
+            res.json(data)
         }
     })
 }
@@ -59,8 +61,20 @@ exports.findBicycle = async (req, res) => {
         if (err) {
             return next(err)
         } else {
-            console.log(data);
-            res.send(data)
+            console.log(`DATA FROM : /get/bicycle \n ${data}`);
+            res.json(data)
+        }
+    })
+}
+
+// get one by place_id
+exports.findByplace_id = async (req, res) => {
+    Places.findOne({ place_id : parseInt(req.params.place_id) }, (err, data) =>{
+        if (err) {
+            return next(err)
+        } else {
+            console.log(`DATA FROM : /get/place_id \n ${data}`);
+            res.json(data);
         }
     })
 }

@@ -2,45 +2,53 @@ const mongoose = require('mongoose');
 
 const PlaceSchema = new mongoose.Schema({
 
-    places_id : {
-        type : String
+    place_id : {
+        type : String,
+        required : [true]
     },
 
     name : {
         type : String,
-        required: [true, "Please enter a name."],
+        required : [true]
     },
 
     latitude : {
         type : String,
-        required: [true, "Please enter latitude."],
+        required: [true]
     },
 
     longtitude : {
         type : String,
-        required: [true, "Please enter longtitude."],
+        required: [true]
     },
     
     status : {
-        type : String
+        type : String,
+        required: [true]
     },
 
     quantity : {
-        type : Number
+        type : Number,
+        required: [true]
     },
 
     type : {
-        type : String,
-        required: [true, "Please enter type."]
+        type : [String],
+        required: [true]
     },
 
     description : {
         type : String,
-        required: [true, "Please enter description."]
+        required: [true]
     },
 
     review : {
-        type : Number
+        type : Number, min : 0, max : 5
+    },
+
+    img : {
+        type : [String],
+        required : [true]
     }
 
 })
