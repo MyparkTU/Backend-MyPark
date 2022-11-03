@@ -37,7 +37,7 @@ app.use("/devices",DeviceRoutes);
 
 app.use("/places",PlacesRoutes);
 
-app.use("/report",ReportRoutes);
+app.use("/reports",ReportRoutes);
 
 app.listen(3001, () => {
 

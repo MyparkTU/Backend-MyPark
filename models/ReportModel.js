@@ -5,11 +5,6 @@ const ReportSchema = new mongoose.Schema ({
     report_id : {
         type : String
     },
-    
-    // name : {
-    //     type : String
-    // },
-
     topic : {
         type : String
     },
@@ -18,9 +13,9 @@ const ReportSchema = new mongoose.Schema ({
         type : String
     },
 
-    // img : {
-    //     type : String
-    // },
+   img : {
+       type : String
+   },
 
     description : {
         type : String

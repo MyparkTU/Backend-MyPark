@@ -11,18 +11,20 @@ router.get("/", (req, res) => {
 router.post("/create", place.create);
 
 // get all data
-router.get("/getAll", place.findAll);
+router.get("/all", place.findAll);
 
 // get all for cars
-router.get("/get/car", place.findCar);
+router.get("/car", place.findCar);
 
 // get all for motorcycles
-router.get("/get/motorcycle", place.findMotorcycle);
+router.get("/motorcycle", place.findMotorcycle);
 
 // get all for bicycles
-router.get("/get/bicycle", place.findBicycle)
+router.get("/bicycle", place.findBicycle)
 
 // get the specific one
-router.get("/get/place_id/:place_id", place.findByplace_id)
+router.get("/place_id/:place_id", place.findByplace_id)
+
+router.delete("/delete/:id", place.delete)
 
 module.exports = router;
