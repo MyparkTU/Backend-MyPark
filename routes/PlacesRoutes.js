@@ -25,7 +25,7 @@ router.get("/bicycle", place.findBicycle);
 router.get("/place_id/:place_id", place.findByplace_id);
 
 // patch update review
-router.patch("/review/place_id/:place_id", place.updateReview);
+router.patch("/review/:place_id", place.review);
 
 router.delete("/delete/:id", place.delete);
 

@@ -87,7 +87,7 @@ exports.update = async (req, res) => {
 }
 
 // Patch update review
-exports.updateReview = async (req, res) => {
+exports.review = async (req, res) => {
     const updates = req.body;
 
     if ({ place_id : req.params.place_id }) {
