@@ -26,7 +26,7 @@ exports.findAll = async (req, res) => {
             return next(err)
         } else {
             console.log(`DATA FROM : /getAll \n ${data}`);
-            res.json(data);
+            res.status(200).json(data);
         }
     })
 }
@@ -38,7 +38,7 @@ exports.findCar = async (req, res) => {
             return next(err)
         } else {
             console.log(`DATA FROM : /get/car \n ${data}`);
-            res.json(data)
+            res.status(200).json(data)
         }
     })
 }
@@ -50,7 +50,7 @@ exports.findMotorcycle = async (req, res) => {
             return next(err)
         } else {
             console.log(`DATA FROM : /get/mortocycle \n ${data}`);
-            res.json(data)
+            res.status(200).json(data)
         }
     })
 }
@@ -62,7 +62,7 @@ exports.findBicycle = async (req, res) => {
             return next(err)
         } else {
             console.log(`DATA FROM : /get/bicycle \n ${data}`);
-            res.json(data)
+            res.status(200).json(data)
         }
     })
 }
@@ -74,7 +74,7 @@ exports.findByplace_id = async (req, res) => {
             return next(err)
         } else {
             console.log(`DATA FROM : /get/place_id \n ${data}`);
-            res.json(data);
+            res.status(200).json(data);
         }
     })
 }
@@ -84,6 +84,23 @@ exports.update = async (req, res) => {
     await Report.updateOne({ id }, req.body);
     const updatedDoc = await Report.findOne(id);
     return res.status(200).json(updatedDoc);
+}
+
+// Patch update review
+exports.updateReview = async (req, res) => {
+    const updates = req.body;
+
+    if ({ place_id : req.params.place_id }) {
+        Places.updateOne({ place_id : req.params.place_id }, {$set : updates})
+        .then((result) => {
+            console.log('Document updated!')
+            res.status(200).json(result)
+        }).catch((err) => {
+            res.status(500).json({ error : 'Cannot update the document.' })
+        });
+    } else {
+        req.status(500).json({ error : 'Not a valid doc id.' })
+    }
 }
 
 exports.delete = async (req,res)=>{

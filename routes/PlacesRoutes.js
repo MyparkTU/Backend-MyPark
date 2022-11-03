@@ -1,4 +1,3 @@
-
 const express = require('express');
 const router = express.Router();
 const place = require('../controllers/PlacesController');
@@ -20,11 +19,14 @@ router.get("/car", place.findCar);
 router.get("/motorcycle", place.findMotorcycle);
 
 // get all for bicycles
-router.get("/bicycle", place.findBicycle)
+router.get("/bicycle", place.findBicycle);
 
 // get the specific one
-router.get("/place_id/:place_id", place.findByplace_id)
+router.get("/place_id/:place_id", place.findByplace_id);
 
-router.delete("/delete/:id", place.delete)
+// patch update review
+router.patch("/review/place_id/:place_id", place.updateReview);
+
+router.delete("/delete/:id", place.delete);
 
 module.exports = router;
