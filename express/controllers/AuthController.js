@@ -3,11 +3,18 @@ const jwt = require("jsonwebtoken");
 const User = require('../models/UserModel');
 
 exports.signup = async (req, res) => {
-    bcrypt
-        .hash(req.body.password, 10)
+    const takenUsername = await User.findOne({username:User.username})
+    const takenEmail = await User.findOne({email:User.email})
+    if(takenUsername || takenEmail){
+        res.json({
+            message:"Username or email has already been taken"
+        })
+    }else{
+        bcrypt.hash(req.body.password, 10)
         .then((hashedPassword) => {
             // create a new user instance and collect the data
             const user = new User({
+                username : req.body.username,
                 email: req.body.email,
                 password: hashedPassword,
             });
@@ -29,6 +36,8 @@ exports.signup = async (req, res) => {
                 e,
             });
         });
+    }
+    
 }
 
 exports.signin = async (req,res) =>{

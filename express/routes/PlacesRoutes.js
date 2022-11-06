@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
 });
 
 // for create newPlace to db
-router.post("/create", place.create);
+router.post("/create",verifyJWT, place.create);
 
 // get all data
 router.get("/all", place.findAll);
@@ -25,8 +25,8 @@ router.get("/bicycle", place.findBicycle);
 router.get("/place_id/:place_id", place.findByplace_id);
 
 // patch update review
-router.patch("/review/:place_id", place.review);
+router.patch("/review/:place_id",verifyJWT, place.review);
 
-router.delete("/delete/:id", place.delete);
+router.delete("/delete/:id",verifyJWT, place.delete);
 
 module.exports = router;

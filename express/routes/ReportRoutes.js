@@ -6,12 +6,12 @@ router.get("/", (req, res) => {
     res.json({ message: "Hello This Report Path" });
 });
 //Hello
-router.get("/all", Report.findAll);
+router.get("/all", verifyJWT,Report.findAll);
 //Hello
 router.post("/create", Report.create);
 // for create newPlace to db
-router.post("/:id", Report.findByid);
+router.post("/:id",verifyJWT, Report.findByid);
 // get all data
-router.put("/:id", Report.update);
+router.put("/:id",verifyJWT, Report.update);
 //Get
 module.exports = router;

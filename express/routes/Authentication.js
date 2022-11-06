@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const auth = require('../auth');
+const verifyJWT = require('../validations/verifyJWT');
 const controllers = require('../controllers/AuthController')
 
 router.get("/", (req, res) => {
@@ -16,7 +16,7 @@ router.get("/free-endpoint", (req, res) => {
     res.json({ message: "You are free to access me anytime" });
 });
 
-router.get("/auth-endpoint", auth, (req, res) => {
+router.get("/auth-endpoint", verifyJWT, (req, res) => {
     res.json({ message: "You are authorized to access me" });
 });
 
