@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const place = require('../controllers/PlacesController');
 
+const verifyJWT = require('../validations/verifyJWT');
+
 router.get("/", (req, res) => {
     res.json({ message: "Hello This Places Path" });
 });

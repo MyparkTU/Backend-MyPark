@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Report = require('../controllers/ReportController');
+const verifyJWT = require('../validations/verifyJWT');
 
 router.get("/", (req, res) => {
     res.json({ message: "Hello This Report Path" });

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const verifyJWT = require('../validations/verifyJWT');
+
 const controllers = require('../controllers/AuthController')
 
 router.get("/", (req, res) => {
