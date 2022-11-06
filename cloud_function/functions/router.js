@@ -22,7 +22,6 @@ router.get('/', async (req, res) => {
     });
     res.json({
         results: entities,
-        count: entities.length
     });
 });
 
