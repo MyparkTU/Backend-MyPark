@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
 router.post("/create",verifyJWT, place.create);
 
 // get all data
-router.get("/all", place.findAll);
+router.get("/all", verifyJWT,place.findAll);
 
 // get all for cars
 router.get("/car", place.findCar);

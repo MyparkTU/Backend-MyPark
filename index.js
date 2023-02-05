@@ -1,13 +1,14 @@
 const express = require("express");
+const cors = require('cors');
+const dbConnect = require("./config/dbConnect");
+
 const app = express();
 const bodyParser = require("body-parser");
-const dbConnect = require("./config/dbConnect");
 const Authentication = require('./routes/Authentication');
-const DeviceRoutes = require('./routes/DeviceRoutes');
 const PlacesRoutes = require('./routes/PlacesRoutes');
 const ReportRoutes = require('./routes/ReportRoutes');
 const ReviewRoutes = require('./routes/ReviewRoutes');
-const cors = require('cors');
+
 dbConnect();
 
 app.use((req, res, next) => {
@@ -20,12 +21,13 @@ app.use((req, res, next) => {
     "Access-Control-Allow-Methods",
     "GET, POST, PUT, DELETE, PATCH, OPTIONS"
   );
-  next();
+  next(); 
 });
 
-app.use(cors());
+app.use(cors()); 
 
 app.use(bodyParser.json());
+ 
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
@@ -34,7 +36,7 @@ app.get("/", (req, res) => {
 
 app.use("/authentication", Authentication);
 
-app.use("/devices", DeviceRoutes);
+//app.use("/devices", DeviceRoutes);
 
 app.use("/places", PlacesRoutes);
 
